@@ -92,7 +92,7 @@ app.get("/genre", async (req, res) => {
   const Song = await Songs.findOne({ Genre });
   var gene;
   if (!Song && Song === null){
-    gene="there is no song with that genre"
+    gene="there is no song with that Genre"
   }
   else{
   gene=Song;}
