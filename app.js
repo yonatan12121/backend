@@ -4,14 +4,14 @@ const mongoose=require("mongoose");
 app.use(express.json());
 const cors = require("cors");
 app.use(cors());
-
+require('dotenv').config()
 
 mongoose.set('strictQuery', true);
   
 
 
-
-const mongoUrl = "mongodb+srv://Admin:EGCVzGdOSnHrvC5X@cluster0.c6i7ljl.mongodb.net/?retryWrites=true&w=majority";
+require('dotenv').config()
+const mongoUrl = process.env.mongoUrl;
 mongoose
   .connect(mongoUrl, {
     useNewUrlParser: true,
