@@ -87,7 +87,7 @@ app.get("/Totalsong", async (req, res) => {
 })
 
 app.get("/genre", async (req, res) => {
-  const { Genre } = req.body;
+  const { Genre } = req.body; 
   console.log(Genre);
   const Song = await Songs.findOne({ Genre });
   var gene;
