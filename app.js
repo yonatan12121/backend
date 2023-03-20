@@ -87,7 +87,7 @@ app.get("/Totalsong", async (req, res) => {
 })
 
 app.get("/genre", async (req, res) => {
-  const { Genre } = req.body; 
+  const { Genre } = req.body;
   console.log(Genre);
   const Song = await Songs.findOne({ Genre });
   var gene;
@@ -139,19 +139,13 @@ app.post("/Updatesong", async (req, res) => {
 app.post("/Removesong", async (req, res) => {
   const { title } = req.body;
   console.log(title);
- const data =await Songs.deleteOne(
-    { _id: title }, (err, doc) => {
-      if (err) return res.send(err);
-      console.log("removed the Song")
-      res.send(data);
+  try {
+    const data = await Songs.findByIdAndDelete({ _id: title })
+    res.send("removed the Song")
 
-
-
-
-    })
-
-
-
+  } catch (error) {
+    res.send(error);
+  }
 
 });
 
