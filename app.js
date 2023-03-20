@@ -125,7 +125,7 @@ app.post("/Updatesong", async (req, res) => {
   var Genre = values.genre;
   // console.log(values);
   // console.log(email, firstName, lastName, DOB, nation, gender);
-  console.log("ti", Title);
+  console.log("ti", id);
   try {
     const data = await Songs.updateMany({ _id: id }, { $set: { Title, Artist, Album, Genre } })
     data.save();
@@ -139,10 +139,12 @@ app.post("/Updatesong", async (req, res) => {
 app.post("/Removesong", async (req, res) => {
   const { title } = req.body;
   console.log(title);
-  Songs.deleteOne(
+ const data =await Songs.deleteOne(
     { _id: title }, (err, doc) => {
-      if (err) return console.log(err);
+      if (err) return res.send(err);
       console.log("removed the Song")
+      res.send(data);
+
 
 
 
